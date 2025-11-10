@@ -16,7 +16,11 @@ class Program
         // TODO
         ConcurrentQueue<int> queue = new ConcurrentQueue<int>();
 
-        Producer producer = new Producer(1, queue);
+        Producer producer1 = new Producer(1, queue);
+        Producer producer2 = new Producer(2, queue);
+        Producer producer3 = new Producer(3, queue);
+        Producer producer4 = new Producer(4, queue);
+        Producer producer5 = new Producer(5, queue);
 
 
         Console.WriteLine("Producer und Consumer gestartet...\n");

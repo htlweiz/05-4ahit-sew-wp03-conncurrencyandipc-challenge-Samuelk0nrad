@@ -31,6 +31,13 @@ public class Producer
     {
         while (!shouldStop)
         {
+
+            if(products.Count() > 50)
+            {
+                Stop();
+                break;
+            }
+
             int number = random.Next(1, 101); // Zufällige Zahl zwischen 1 und 100
 
             products.Enqueue(number);
