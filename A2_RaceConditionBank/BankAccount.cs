@@ -5,6 +5,8 @@ namespace A2_RaceConditionBank;
 public class BankAccount
 {
     private int balance;
+
+    private static object lockObj = new object();
    
     
     public BankAccount(int initial) 
@@ -14,12 +16,18 @@ public class BankAccount
     
     public void Deposit(int amount) 
     { 
-       
+        lock(lockObj)
+        {
+            balance += amount;
+        }
     }
     
     public void Withdraw(int amount) 
     { 
-        
+        lock(lockObj)
+        {
+            balance -= amount;
+        }
     }
     
     public int GetBalance() 

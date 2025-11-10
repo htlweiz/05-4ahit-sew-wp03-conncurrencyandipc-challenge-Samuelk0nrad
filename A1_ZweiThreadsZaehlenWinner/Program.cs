@@ -22,6 +22,8 @@ class Program
         threadA.Join();
         threadB.Join();
 
+
+
         if(counter > counterDown)
         {
             Console.WriteLine("Thread A win");
