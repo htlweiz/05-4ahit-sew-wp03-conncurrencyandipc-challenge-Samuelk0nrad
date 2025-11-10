@@ -8,6 +8,8 @@ class Program
 
     static int counter = 0;
     static int counterDown = 100;
+
+    static object lockObj = new Object();
     
     public static void Main(string[] args)
     {
@@ -23,21 +25,34 @@ class Program
     
     private static void CountUpThreadA()
     {
-        for (;counter < 100; counter++)
+        while (counter < 100)
         {
-            Console.WriteLine($"Thread A: {counter}");
-            Thread.Sleep(100);
+            lock (lockObj)
+            {
+                if (counter == counterDown)
+                {
+                    Console.WriteLine(counter);
+                    break;
+                }
+                counter++;
+                Thread.Sleep(100);
+            }
         }
-        
     }
     
     private static void CountDownThreadB()
     {
-        for (;counterDown > 0; counterDown--)
+        while (counterDown > 0)
         {
-            counterDown--;
-            Console.WriteLine($"Thread B: {counterDown}");
-            Thread.Sleep(100);
+            lock (lockObj)
+            {
+                if (counter == counterDown)
+                {
+                    break;
+                }
+                counterDown--;
+                Thread.Sleep(100);
+            }
         }
     }
 }
