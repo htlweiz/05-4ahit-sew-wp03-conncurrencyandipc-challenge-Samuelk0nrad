@@ -28,7 +28,7 @@ class Program
             threads[i].Join();
         }
 
-        Console.WriteLine("account: ", account.GetBalance());
+        Console.WriteLine("balance: " + account.GetBalance());
     }
     
     private static void PerformBankOperations(BankAccount account)

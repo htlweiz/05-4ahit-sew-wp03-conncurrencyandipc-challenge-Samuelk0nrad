@@ -10,12 +10,17 @@ public class Producer
     private readonly int producerId;
     private readonly Random random;
     private volatile bool shouldStop = false;
+
+    private ConcurrentQueue<int> products;
+
     private Thread? producerThread;
 
-    public Producer( int id)
+    public Producer(int id, ConcurrentQueue<int> queue)
     {
         this.producerId = id;
         this.random = new Random(id * 1000); // Verschiedene Seeds für verschiedene Producer
+
+        this.products = queue;
         
         // Thread im Konstruktor starten
         producerThread = new Thread(ProduceNumbers);
@@ -27,6 +32,8 @@ public class Producer
         while (!shouldStop)
         {
             int number = random.Next(1, 101); // Zufällige Zahl zwischen 1 und 100
+
+            products.Enqueue(number);
            
             Thread.Sleep(1000); // 1 Sekunde Takt
         }

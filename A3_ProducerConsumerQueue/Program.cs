@@ -7,13 +7,17 @@ namespace A3_ProducerConsumerQueue;
 
 class Program
 {
+
     public static void Main(string[] args)
     {
         Console.WriteLine("Übung 3: Producer-Consumer");
         Console.WriteLine("==========================================\n");
 
-       // TODO
-       
+        // TODO
+        ConcurrentQueue<int> queue = new ConcurrentQueue<int>();
+
+        Producer producer = new Producer(1, queue);
+
 
         Console.WriteLine("Producer und Consumer gestartet...\n");
 
