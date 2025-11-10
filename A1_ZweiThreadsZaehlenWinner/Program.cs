@@ -35,8 +35,8 @@ class Program
                     break;
                 }
                 counter++;
-                Thread.Sleep(100);
             }
+            Thread.Sleep(100);
         }
     }
     
@@ -51,8 +51,8 @@ class Program
                     break;
                 }
                 counterDown--;
-                Thread.Sleep(100);
             }
+            Thread.Sleep(100);
         }
     }
 }
