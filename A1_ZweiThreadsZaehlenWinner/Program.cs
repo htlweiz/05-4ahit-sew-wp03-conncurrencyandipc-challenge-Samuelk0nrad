@@ -21,6 +21,17 @@ class Program
 
         threadA.Join();
         threadB.Join();
+
+        if(counter > counterDown)
+        {
+            Console.WriteLine("Thread A win");
+        } else if(counter < counterDown)
+        {
+            Console.WriteLine("Thread B win");
+        } else
+        {
+            Console.WriteLine("even");
+        }
     }
     
     private static void CountUpThreadA()
@@ -31,7 +42,6 @@ class Program
             {
                 if (counter == counterDown)
                 {
-                    Console.WriteLine(counter);
                     break;
                 }
                 counter++;
