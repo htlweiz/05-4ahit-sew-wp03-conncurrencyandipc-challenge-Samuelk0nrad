@@ -11,8 +11,6 @@ class Program
     
     public static void Main(string[] args)
     {
-        Console.WriteLine("Übung 1: Zwei Threads – Zählen & Winner");
-        
         Thread threadA = new Thread(CountUpThreadA);
         Thread threadB = new Thread(CountDownThreadB);
 
